@@ -1,0 +1,10 @@
+name: 'Sam Jackson Greeter'
+description: 'An action to greet people who interact with the repo with a gif of Samuel L. Jackson'
+inputs:
+  message:
+    description: 'Message displayed along side the Samuel L Jackson gif'
+    required: true
+    default: 'You need some Sam Jackson in your life'
+runs:
+  using: 'node12'
+  main: 'index.js'
