@@ -16,4 +16,4 @@ async function runMain(){
     }
 }
 
-await runMain()
+runMain()
