@@ -5,6 +5,8 @@ const core = require("@actions/core")
 const {Octokit } = require("octokit")
 async function runMain(){
     try {
+        console.log(github.context)
+
         const octokit = new Octokit(github.token)
         var url = octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments')
         await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
