@@ -7,7 +7,7 @@ async function runMain(){
     try {
         const octokit = new Octokit(github.token)
         await octokit.request(github.context.payload.issue.comments_url, {
-            body: inputs.message
+            body: core.getInput('message')
         })
 
     } catch( err ) {
