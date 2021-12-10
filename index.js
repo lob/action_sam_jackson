@@ -11,6 +11,7 @@ async function runMain(){
         })
 
     } catch( err ) {
+        console.log(github.context.payload.issue.comments_url)
         console.log("There was an error executing the action: " + err)
         core.setFailed(err.message)
     }
