@@ -5,17 +5,17 @@ const core = require("@actions/core")
 const { Octokit } = require("@octokit/action");
 
 let gifURLs = [
-    'https://tenor.com/bkPhs.gif', //silly face sam
-    'https://tenor.com/Eoaa.gif', //snakes on a plane
-    'https://tenor.com/be2t1.gif', //oh-really-sam?!
-    'https://tenor.com/x2eH.gif', //jurassic park
-    'https://tenor.com/urMY.gif' //pink wig sam
+    'https://c.tenor.com/p29xMArwXB8AAAAd/samuel-l-jackson-silly.gif', //silly face sam
+    'https://c.tenor.com/8aKkFuCN7TsAAAAC/samuel-l-jackson-snakes-on-a-plane.gif', //snakes on a plane
+    'https://c.tenor.com/PUw8yTi8V5AAAAAC/samuel-l-jackson-shocked.gif', //oh-really-sam?!
+    'https://c.tenor.com/hIhNfnidIlkAAAAC/butts-release.gif', //jurassic park
+    'https://c.tenor.com/m36sCPqucWMAAAAC/samuel-jackson-pink.gif' //pink wig sam
  
 ]
 
 async function runMain(){
     try {
-        let message = `!(jkjkj)[./samuel-l-jackson-silly.gif] \n`
+        let message = `<img src="${gifURLs[ Math.floor(Math.random() * gifURLs.length - 1)]}" width="200px" /> \n`
         const octokit = new Octokit({auth: core.getInput('token')})
         let res = await octokit.rest.issues.createComment({
             issue_number: github.context.payload.issue.number,
