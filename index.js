@@ -5,9 +5,9 @@ const core = require("@actions/core")
 const {Octokit } = require("octokit")
 async function runMain(){
     try {
-        console.log(github.context.payload.repository)
-        const octokit = new Octokit(github.token)
-        await octokit.request('POST /repos/{owner}/{repo}/issues/{issue_number}/comments', {
+        console.log(github.token)
+        const octokit = new Octokit(core.getInput('token'))
+        await octokit.rest.issues.createComment({
             issue_number: github.context.payload.issue.id,
             owner: github.context.payload.repository.owner.login,
             repo: github.context.payload.repository.name,

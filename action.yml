@@ -5,6 +5,9 @@ inputs:
     description: 'Message displayed along side the Samuel L Jackson gif'
     required: true
     default: 'You need some Sam Jackson in your life'
+  token:
+    description: 'Github secret token'
+    required: true
 runs:
   using: 'node12'
   main: 'index.js'
