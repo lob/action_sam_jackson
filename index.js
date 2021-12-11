@@ -15,7 +15,7 @@ let gifURLs = [
 
 async function runMain(){
     try {
-        let message = `[[${gifURLs[0]}]] \n`
+        let message = `[[./samuel-l-jackson-silly.gif]] \n`
         const octokit = new Octokit({auth: core.getInput('token')})
         let res = await octokit.rest.issues.createComment({
             issue_number: github.context.payload.issue.number,
