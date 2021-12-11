@@ -3,30 +3,27 @@ const github = require("@actions/github")
 const core = require("@actions/core")
 
 const { Octokit } = require("@octokit/action");
+
+let gifURLs = [
+    'https://tenor.com/bkPhs.gif', //silly face sam
+    'https://tenor.com/Eoaa.gif', //snakes on a plane
+    'https://tenor.com/be2t1.gif', //oh-really-sam?!
+    'https://tenor.com/x2eH.gif', //jurassic park
+    'https://tenor.com/urMY.gif' //pink wig sam
+ 
+]
+
 async function runMain(){
     try {
-        console.log(github.context.payload)
+        let message = `[[${gifURLs[0]}]] \n`
         const octokit = new Octokit({auth: core.getInput('token')})
-        console.log({
-            issue_number: github.context.payload.issue.number,
-            owner: github.context.payload.repository.owner.login,
-            repo: github.context.payload.repository.name,
-            body: core.getInput('message')
-        })
-        const { data } = await octokit.request("POST /repos/{owner}/{repo}/issues", {
-            owner: github.context.payload.repository.owner.login,
-            repo: github.context.payload.repository.name,
-            title: "My test issue",
-          });
-        console.log(data)
         let res = await octokit.rest.issues.createComment({
             issue_number: github.context.payload.issue.number,
             owner: github.context.payload.repository.owner.login,
             repo: github.context.payload.repository.name,
-            body: core.getInput('message')
+            body: message + core.getInput('message')
         })
         console.log(res)
-        // console.log(data)
 
     } catch( err ) {
         console.log("There was an error executing the action: " + err)
