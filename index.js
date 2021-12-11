@@ -5,14 +5,15 @@ const core = require("@actions/core")
 const {Octokit } = require("octokit")
 async function runMain(){
     try {
-        console.log(github.token)
+        console.log(core.getInput('token'))
         const octokit = new Octokit(core.getInput('token'))
-        await octokit.rest.issues.createComment({
+        let res = await octokit.rest.issues.createComment({
             issue_number: github.context.payload.issue.id,
             owner: github.context.payload.repository.owner.login,
             repo: github.context.payload.repository.name,
             body: core.getInput('message')
         })
+        console.log(res)
 
     } catch( err ) {
         console.log("There was an error executing the action: " + err)
