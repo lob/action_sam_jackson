@@ -8,6 +8,10 @@ inputs:
   token:
     description: 'Github secret token'
     required: true
+branding:
+  icon: mic
+  color: blue
+author: lob
 runs:
   using: 'node12'
   main: 'index.js'
