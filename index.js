@@ -5,11 +5,11 @@ const core = require("@actions/core")
 const {Octokit } = require("octokit")
 async function runMain(){
     try {
-        console.log(core.getInput('token'))
-        const octokit = new Octokit({auth: core.getInput('token')})
+        console.log(github.context)
+        const octokit = new github.getOctokit({auth: core.getInput('token')})
         console.log({
             issue_number: github.context.payload.issue.id,
-            owner: github.context.payload.repository.owner.login,
+            owner: github.context.payload.repository.owner,
             repo: github.context.payload.repository.name,
             body: core.getInput('message')
         })
