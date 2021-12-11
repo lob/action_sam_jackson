@@ -14,8 +14,8 @@ async function runMain(){
             body: core.getInput('message')
         })
         const { data } = await octokit.request("POST /repos/{owner}/{repo}/issues", {
-            owner,
-            repo,
+            owner: github.context.payload.repository.owner.login,
+            repo: github.context.payload.repository.name,
             title: "My test issue",
           });
         console.log(data)
