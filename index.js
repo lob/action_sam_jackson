@@ -15,9 +15,10 @@ let gifURLs = [
 
 async function runMain(){
     try {
-        let randInt = Math.floor(Math.random() * gifURLs.length - 1)
-        console.log(randInt)
-        let message = `<img src="${gifURLs[randInt]}" width="200px" /> \n`
+        const randInt = function (min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        let message = `<img src="${gifURLs[randInt(0, gifURLs.length - 1)]}" width="200px" /> \n`
         const octokit = new Octokit({auth: core.getInput('token')})
         let res = await octokit.rest.issues.createComment({
             issue_number: github.context.payload.issue.number,
