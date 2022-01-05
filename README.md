@@ -9,7 +9,7 @@
 
  You can add the action to your Action YAML file like so: 
  ```
-  - uses: lob/action_sam_jackson
+  - uses: lob/action_sam_jackson@0.0.2
     with:
         message: '<your message />'
         token: ${{secrets.GITHUB_TOKEN}}
